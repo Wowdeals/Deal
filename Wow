@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Deals</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Daily Deals</h1>
+  </header>
+  <main>
+    <div id="deal-list">
+      <!-- Deal items will be dynamically added here -->
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+main {
+  padding: 20px;
+}
+
+.deal-item {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.deal-item img {
+  max-width: 100%;
+}
+
+.deal-item a {
+  color: #333;
+  text-decoration: none;
+}
+
+.deal-item h2 {
+  margin-top: 0;
+}
+
+.deal-item p {
+  margin-bottom: 0;
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // Sample deals data (you can fetch this from an API)
+  const deals = [
+    { title: 'Deal 1', image: 'deal1.jpg', link: 'https://example.com/deal1' },
+    { title: 'Deal 2', image: 'deal2.jpg', link: 'https://example.com/deal2' },
+    { title: 'Deal 3', image: 'deal3.jpg', link: 'https://example.com/deal3' }
+  ];
+
+  const dealList = document.getElementById('deal-list');
+
+  // Render deals
+  deals.forEach(deal => {
+    const dealItem = document.createElement('div');
+    dealItem.classList.add('deal-item');
+
+    const image = document.createElement('img');
+    image.src = deal.image;
+    dealItem.appendChild(image);
+
+    const title = document.createElement('h2');
+    title.textContent = deal.title;
+    dealItem.appendChild(title);
+
+    const link = document.createElement('a');
+    link.href = deal.link;
+    link.textContent = 'View Deal';
+    dealItem.appendChild(link);
+
+    dealList.appendChild(dealItem);
+  });
+});
